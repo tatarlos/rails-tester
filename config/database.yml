@@ -24,4 +24,5 @@ development:
 
 production:
   <<: *default
-  database: rails-tester
+    username: <%= ENV['DATABASE_URL'] %>
+    password: <%= ENV['DATABASE_PASS'] %>
