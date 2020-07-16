@@ -24,5 +24,6 @@ development:
 
 production:
   <<: *default
+    pool: 1
     username: <%= ENV['DATABASE_URL'] %>
     password: <%= ENV['DATABASE_PASS'] %>
