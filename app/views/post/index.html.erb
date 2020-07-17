@@ -1,0 +1,32 @@
+<h1>Posts</h1>
+
+
+<div class="md:p-4 md:bg-white md:rounded md:shadow-lg md:w-2/3" >
+  <%= form_with model: @post, class:'blueballs',  url: get_emails_url,  method:'post', remote:true do |f| %>
+    <%= f.submit'get new emails' %>
+  <% end %>
+</div>
+
+<% if @posts.count > 0 %>
+  <% @posts.each do |post| %>
+    <blockquote>
+      <p><%= post.body %></p>
+      <small><%= post.email %></small>
+    </blockquote>
+  <% end %>
+<% else %>
+  <p><em>Oops, doesn't look like there are any posts yet.</em></p>
+<% end %>
+
+
+<script>
+  $( document ).ready(function() {
+    form = $('.blueballs');
+
+    form.on("ajax:success", function(event){
+      data = event.detail[0];
+      console.log(data);
+    });
+  });
+</script>
+
